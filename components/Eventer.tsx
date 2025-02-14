@@ -1,3 +1,5 @@
+"use client"
+
 interface EventerProps {
     data: any[];
   }

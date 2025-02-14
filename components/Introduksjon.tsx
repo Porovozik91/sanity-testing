@@ -1,17 +1,25 @@
-interface IntroduksjonProps {
-  data?: { title: string; content: string; slug?: { current: string } }[];
+"use client"
+
+import React from "react";
+
+
+interface IntroduksjonData {
+  _id: string;
+  title: string;
+  content: string;
+  slug?: { current: string };
 }
 
-const Introduksjon: React.FC<IntroduksjonProps> = ({ data = [] }) => {
-  if (data.length === 0) {
-    return <p>Ingen introduksjoner tilgjengelig</p>;
-  }
+interface Props {
+  data: IntroduksjonData[];
+}
 
+
+const Introduksjon: React.FC<Props> = ({ data }) => {
   return (
     <div>
-      <h1>Introduksjon</h1>
       {data.map((item) => (
-        <div key={item.slug?.current ?? item.title} className="text-center">
+        <div key={item._id}> 
           <h2>{item.title}</h2>
           <p>{item.content}</p>
         </div>
@@ -21,6 +29,9 @@ const Introduksjon: React.FC<IntroduksjonProps> = ({ data = [] }) => {
 };
 
 export default Introduksjon;
+
+
+
 
 
   
